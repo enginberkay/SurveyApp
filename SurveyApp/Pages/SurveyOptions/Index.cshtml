@@ -1,0 +1,55 @@
+﻿@page
+@model SurveyApp.Pages.SurveyOptions.IndexModel
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.SurveyOption[0].Point)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SurveyOption[0].Survey)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SurveyOption[0].Option)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.SurveyOption) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Point)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Survey.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Option.Name)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+</body>
+</html>
