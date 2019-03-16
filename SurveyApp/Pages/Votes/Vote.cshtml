@@ -1,0 +1,55 @@
+﻿@page
+@model SurveyApp.Pages.Votes.VoteModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Vote</title>
+</head>
+<body>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.SurveyOption[0].Point)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.SurveyOption[0].Survey)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.SurveyOption[0].Option)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.SurveyOption)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Point)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Survey.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Option.Name)
+                    </td>
+                    <td>
+                        <form method="post">
+                            <input type="hidden" name="id" asp-for="@item.Id" />
+                            <input type="submit" value="Vote" asp-page-handler="Vote" class="btn btn-danger" /> |
+                            <a asp-page="/Surveys/Index">Back to List</a>
+                        </form>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</body>
+</html>
