@@ -25,7 +25,10 @@ namespace SurveyApp
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc();
+            services.AddMvc().AddRazorPagesOptions(options =>
+            {
+                options.Conventions.AddPageRoute("/Surveys/Index", "");
+            });
             services.AddDbContext<PostgresContext>(opt => opt.UseNpgsql(_configuration.GetConnectionString("DefaultConnection")));
         }
 
