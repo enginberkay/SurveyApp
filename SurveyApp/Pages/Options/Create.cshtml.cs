@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using SurveyApp.Models;
 
-namespace SurveyApp.Pages.OptionPages
+namespace SurveyApp.Pages.Options
 {
     public class CreateModel : PageModel
     {
